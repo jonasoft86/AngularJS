@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="filtros">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtros personalizados</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+
+
+<h1>{{"dinosaurio" | cambiar:"F":"i"}}</h1>
+
+
+
+<script type="text/javascript">
+
+    var filtroApp = angular.module('filtros',[]);
+
+    filtroApp.filter('cambiar', function(){
+
+        var cambiarFiltro = function(datosOriginales, primerValor, segundoValor){
+            
+            var nuevoDato = datosOriginales.replace(RegExp(segundoValor,"g"),primerValor);
+
+            return nuevoDato;
+        }
+
+        return cambiarFiltro;
+    })
+
+</script>
+
+</body>
+</html>

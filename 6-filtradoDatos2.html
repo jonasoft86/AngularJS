@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="filtrodatos">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrado de datos 2</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+
+<input type="text" ng-model="buscarFruta">
+
+<div ng-controller="listas">
+    <ul>
+        <li ng-repeat="fruta in frutas | filter:buscarFruta | orderBy:'-nombre' ">
+
+            <h2>{{ fruta.nombre }}</h2>
+            <p>Fruta de color {{ fruta.color }} considerada por ser {{ fruta.propiedades }}</p>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    var miApp = angular.module('filtrodatos',[]);
+    miApp.controller('listas', function($scope){
+
+        $scope.frutas = [
+            {
+                nombre: 'Kiwi',
+                color: 'Verde',
+                propiedades: 'Rico en vitamina C'
+            },
+            {
+                nombre: 'Banana',
+                color: 'Amarillo',
+                propiedades: 'Rico en Potasio'
+            },
+            {
+                nombre: 'Arándano',
+                color: 'Azul',
+                propiedades: 'Rico en Antioxidantes'
+            },
+        ];
+    })
+
+</script>
+
+</body>
+</html>

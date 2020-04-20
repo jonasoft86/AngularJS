@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="filtrodatos">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrado de datos</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+
+<input type="text" ng-model="buscarFruta">
+
+<div ng-controller="listas">
+    <ul>
+        <li ng-repeat="fruta in frutas | filter:buscarFruta">{{ fruta }}</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    var miApp = angular.module('filtrodatos',[]);
+    miApp.controller('listas', function($scope){
+
+        $scope.frutas = ['kiwi','Manzana','Pera'];
+    })
+
+</script>
+
+</body>
+</html>

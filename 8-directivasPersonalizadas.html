@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="directivas">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directivas Personalizadas</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+
+<usuario nombre="Jonathan" apellido="Monroy"></usuario>
+<p usuario nombre="Jonathan" apellido="Monroy"></p>
+
+<script type="text/javascript">
+
+    var directivaApp = angular.module('directivas',[]);
+    directivaApp.directive('usuario', function(){
+
+        var valoresInternos = {};
+
+        // C restricion clase - E restriccion etiquetas
+        valoresInternos.restrict = 'C';
+
+        valoresInternos.scope = {
+            nombreUsuario: '@nombre',
+            apellidoUsuario: '@apellido'
+        }
+
+        valoresInternos.template = "Bienvenido {{nombreUsuario}} {{apellidoUsuario}}";
+
+        return valoresInternos;
+    })
+
+</script>
+
+</body>
+</html>
